@@ -1,4 +1,4 @@
-﻿namespace ws_ISBM_Temp_Gauge
+﻿namespace ISBM_Temp_Gauge
 {
     partial class FormMain
     {

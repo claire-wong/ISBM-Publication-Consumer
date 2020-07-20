@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ws_ISBM_Temp_Gauge
+namespace ISBM_Temp_Gauge
 {
     static class Program
     {

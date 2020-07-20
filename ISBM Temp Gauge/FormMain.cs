@@ -25,7 +25,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace ws_ISBM_Temp_Gauge
+namespace ISBM_Temp_Gauge
 {
     public partial class FormMain : Form
     {
