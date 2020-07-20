@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISBM Temp Gauge", "ISBM Temp Gauge.csproj", "{973167E9-DB2A-4353-9DA1-47A274BE4B61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{973167E9-DB2A-4353-9DA1-47A274BE4B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{973167E9-DB2A-4353-9DA1-47A274BE4B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{973167E9-DB2A-4353-9DA1-47A274BE4B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{973167E9-DB2A-4353-9DA1-47A274BE4B61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {128C1CF3-7E82-465B-869C-051ED689253C}
+	EndGlobalSection
+EndGlobal
