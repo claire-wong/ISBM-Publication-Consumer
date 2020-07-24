@@ -5,7 +5,7 @@
  *          regardless of the actual service bus that delivers the messages.  
  *          
  * Author: Claire Wong
- * Date Created:  2020/04/29
+ * Date Created:  2020/05/19
  * 
  * (c) 2020
  * This code is licensed under MIT license
@@ -58,7 +58,7 @@ namespace ISBM_Temp_Gauge
                 JObject objBOD = JObject.Parse(_ISBMResponse);
                 //Retrieve measured temperature data. 
                 //The response content is an ISBM defined BOD message that contains CCOM data in the data area. 
-                textBoxValue.Text = (string)objBOD["messageContent"]["content"]["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["value"];
+                textBoxValue.Text = (string)objBOD["messageContent"]["content"]["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["value"]["numeric"];
                 labelUnit.Text = (string)objBOD["messageContent"]["content"]["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["UnitOfMeasure"]["ShortName"];
 
                 decimal stringToDecimal = Convert.ToDecimal(textBoxValue.Text);
