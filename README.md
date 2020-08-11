@@ -14,7 +14,8 @@ To build a Windows application to receive published CCOM message from an ISBM 2.
      1.  Visual Studio 2019 Community
      
 #### Dependencies
-     1.  NewtonSoft v4.0.30319 *
+     1.  .Net Framework 4.7.2
+     2.  NewtonSoft v4.0.30319 *
     
      * NuGet Packages
      
