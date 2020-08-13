@@ -160,7 +160,7 @@
             this.textBoxHostName.Name = "textBoxHostName";
             this.textBoxHostName.Size = new System.Drawing.Size(462, 26);
             this.textBoxHostName.TabIndex = 9;
-            this.textBoxHostName.Text = "http://104.239.207.119/isbm/2.0";
+            this.textBoxHostName.Text = "http://YourIP/isbm/2.0";
             // 
             // labelMessage
             // 

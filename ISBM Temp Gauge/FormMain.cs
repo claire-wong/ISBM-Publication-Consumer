@@ -136,7 +136,10 @@ namespace ISBM_Temp_Gauge
             if (buttonConnect.Text == "Connect")
             {
                 string requestBody = "{\"topics\":[\"" + textBoxTopic.Text + "\"]}";
-                string uriString = String.Format(textBoxHostName.Text + "/channels/{0}/subscription-sessions", textBoxChannelId.Text.Replace(@"/", "%252F"));
+
+                //Percent encoding
+                string encodedChannelId = System.Uri.EscapeDataString(textBoxChannelId.Text);
+                string uriString = String.Format(textBoxHostName.Text + "/channels/{0}/subscription-sessions", encodedChannelId.Replace(@"%2F", "%252F"));
                 string _ISBMResponse = await ISBMApi(requestBody, uriString, "Post");
                 textBoxResponse.Text = _ISBMResponse;
 
