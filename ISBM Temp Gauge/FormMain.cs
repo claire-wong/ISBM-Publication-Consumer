@@ -105,9 +105,9 @@ namespace ISBM_Temp_Gauge
                         httpResponse = await client.GetAsync(uriString);
                         break;
 
-                    //case "Post":
-                    //    httpResponse = await client.PostAsync(uriString, httpContent);
-                    //    break;
+                    case "Post":
+                        httpResponse = await client.PostAsync(uriString, HttpContent);
+                        break;
 
                     //case "Put":
                     //    break;
