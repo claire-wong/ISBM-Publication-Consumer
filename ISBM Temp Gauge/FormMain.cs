@@ -35,7 +35,7 @@ namespace ISBM_Temp_Gauge
         {
             InitializeComponent();
 
-            //Setup timer to read publication every 5 seconds
+            // Setup timer to read publication every 5 seconds
             timerReadTemperature = new Timer();
             timerReadTemperature.Interval = 5000;
             timerReadTemperature.Tick += TimerReadTemperature_Tick;
@@ -44,40 +44,40 @@ namespace ISBM_Temp_Gauge
 
         private async void TimerReadTemperature_Tick(object sender, object c)
         {
-            //Pause timer when reading publication from ISBM Adapter 
+            // Pause timer when reading publication from ISBM Adapter 
             timerReadTemperature.Stop();
 
             try
             {
-                //Format HTTP url for ISBM api
+                // Format HTTP url for ISBM api
                 string uriString = String.Format(textBoxHostName.Text + "/sessions/{0}/publication", textBoxSessionId.Text);
-                //Use ISBMApi function to read publication 
+                // Use ISBMApi function to read publication 
                 string _ISBMResponse = await ISBMApi("", uriString, "Get");
 
-                //Load HTTP response content into Newtonsoft JObject
+                // Load HTTP response content into Newtonsoft JObject
                 JObject objBOD = JObject.Parse(_ISBMResponse);
-                //Retrieve measured temperature data. 
-                //The response content is an ISBM defined BOD message that contains CCOM data in the data area. 
+                // Retrieve measured temperature data. 
+                // The response content is an ISBM defined BOD message that contains CCOM data in the data area. 
                 textBoxValue.Text = (string)objBOD["messageContent"]["content"]["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["value"]["numeric"];
                 labelUnit.Text = (string)objBOD["messageContent"]["content"]["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["UnitOfMeasure"]["ShortName"];
 
                 decimal stringToDecimal = Convert.ToDecimal(textBoxValue.Text);
 
-                //Calcualte the length of the empty white bar in front or the red bar,
-                //The full scale of the gauge is from 0 to 50 degree Celsius.
+                // Calcualte the length of the empty white bar in front or the red bar,
+                // The full scale of the gauge is from 0 to 50 degree Celsius.
                 pictureBoxEmpty.Height = 200 - Convert.ToInt16(stringToDecimal * 4);
 
-                //Format HTTP url for ISBM api
+                // Format HTTP url for ISBM api
                 uriString = String.Format(textBoxHostName.Text + "/sessions/{0}/publication", textBoxSessionId.Text);
-                //Use ISBMApi function to delete publication 
+                // Use ISBMApi function to delete publication 
                 _ISBMResponse = await ISBMApi("", uriString, "Delete");
             }
             catch (Exception ex)
             {
-                //Handle BOD or ISBM error 
+                // Handle BOD or ISBM error 
             }
 
-            //Start timer again
+            // Start timer again
             timerReadTemperature.Start();
 
         }   
@@ -87,12 +87,12 @@ namespace ISBM_Temp_Gauge
 
             try
             {
-                //Create a new HTTP Content with requestedBody in UTF encoding  
+                // Create a new HTTP Content with requestedBody in UTF encoding  
                 var HttpContent = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                //Create a HTTP client
+                // Create a HTTP client
                 HttpClient client = new HttpClient();
                
-                //Create a new Uri with uriString and assign it to HTTP client's BaseAddress property 
+                // Create a new Uri with uriString and assign it to HTTP client's BaseAddress property 
                 Uri _uri = new Uri(uriString);
                 client.BaseAddress = _uri;
 
@@ -101,16 +101,14 @@ namespace ISBM_Temp_Gauge
                 switch (httpMethod)
                 {
                     case "Get":
-                        //Use GetAsync to send HTTP request
+                        // Use GetAsync to send HTTP request
                         httpResponse = await client.GetAsync(uriString);
                         break;
 
                     case "Post":
+                        // Use PostAsync to send HTTP request
                         httpResponse = await client.PostAsync(uriString, HttpContent);
                         break;
-
-                    //case "Put":
-                    //    break;
 
                     case "Delete":
                         //Use DeleteAsync to send HTTP request
@@ -137,7 +135,7 @@ namespace ISBM_Temp_Gauge
             {
                 string requestBody = "{\"topics\":[\"" + textBoxTopic.Text + "\"]}";
 
-                //Percent encoding
+                // Percent encoding
                 string encodedChannelId = System.Uri.EscapeDataString(textBoxChannelId.Text);
                 string uriString = String.Format(textBoxHostName.Text + "/channels/{0}/subscription-sessions", encodedChannelId.Replace(@"%2F", "%252F"));
                 string _ISBMResponse = await ISBMApi(requestBody, uriString, "Post");
