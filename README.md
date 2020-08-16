@@ -25,6 +25,7 @@ http://www.openoandm.org/files/standards/ISBM-2.0.pdf
 
 https://www.mimosa.org/mimosa-ccom/
 
-* Just in case you have the dreaded "Couldn't process file resx" problem
+* Just in case you have the dreaded "Couldn't process file resx" problem.
+
 https://code-examples.net/en/q/30f85b7
 
