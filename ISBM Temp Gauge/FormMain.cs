@@ -5,9 +5,9 @@
  *          regardless of the actual service bus that delivers the messages.  
  *          
  * Author: Claire Wong
- * Date Created:  2020/05/19
+ * Date Created:  2023/01/03
  * 
- * (c) 2020
+ * (c) 2023
  * This code is licensed under MIT license
  * 
 */
@@ -24,12 +24,17 @@ using System.Windows.Forms;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using ISBM20ClientAdapter;
+using ISBM20ClientAdapter.Enums;
+using ISBM20ClientAdapter.ResponseType;
 
 namespace ISBM_Temp_Gauge
 {
     public partial class FormMain : Form
     {
         Timer timerReadTemperature;
+        //ISBM Consumer Publication Service
+        ConsumerPublicationService myConsumerPublicationService = new ConsumerPublicationService();
 
         public FormMain()
         {
@@ -42,24 +47,23 @@ namespace ISBM_Temp_Gauge
 
         }
 
-        private async void TimerReadTemperature_Tick(object sender, object c)
+        private void TimerReadTemperature_Tick(object sender, object c)
         {
             // Pause timer when reading publication from ISBM Adapter 
             timerReadTemperature.Stop();
 
             try
             {
-                // Format HTTP url for ISBM api
-                string uriString = String.Format(textBoxHostName.Text + "/sessions/{0}/publication", textBoxSessionId.Text);
-                // Use ISBMApi function to read publication 
-                string _ISBMResponse = await ISBMApi("", uriString, "Get");
+                //Read Publication
+                ReadPublicationResponse myReadPublicationResponse = myConsumerPublicationService.ReadPublication(textBoxHostName.Text, textBoxSessionId.Text);
 
-                // Load HTTP response content into Newtonsoft JObject
-                JObject objBOD = JObject.Parse(_ISBMResponse);
+                //Load Read Publication Message Content into Newtonsoft JObject
+                JObject objBOD = JObject.Parse(myReadPublicationResponse.MessageContent);
+
                 // Retrieve measured temperature data. 
                 // The response content is an ISBM defined BOD message that contains CCOM data in the data area. 
-                textBoxValue.Text = (string)objBOD["messageContent"]["content"]["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["value"]["numeric"];
-                labelUnit.Text = (string)objBOD["messageContent"]["content"]["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["UnitOfMeasure"]["ShortName"];
+                textBoxValue.Text = (string)objBOD["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["value"];
+                labelUnit.Text = (string)objBOD["syncMeasurements"]["dataArea"]["measurements"][0]["measurement"][0]["data"]["measure"]["unitOfMeasure"]["shortName"];
 
                 decimal stringToDecimal = Convert.ToDecimal(textBoxValue.Text);
 
@@ -67,10 +71,7 @@ namespace ISBM_Temp_Gauge
                 // The full scale of the gauge is from 0 to 50 degree Celsius.
                 pictureBoxEmpty.Height = 200 - Convert.ToInt16(stringToDecimal * 4);
 
-                // Format HTTP url for ISBM api
-                uriString = String.Format(textBoxHostName.Text + "/sessions/{0}/publication", textBoxSessionId.Text);
-                // Use ISBMApi function to delete publication 
-                _ISBMResponse = await ISBMApi("", uriString, "Delete");
+                RemovePublicationResponse myRemovePublicationResponse = myConsumerPublicationService.RemovePublication(textBoxHostName.Text, textBoxSessionId.Text);
             }
             catch (Exception ex)
             {
@@ -82,72 +83,22 @@ namespace ISBM_Temp_Gauge
 
         }   
 
-        private async Task<string> ISBMApi(string requestBody, string uriString, string httpMethod)
-        {
-
-            try
-            {
-                // Create a new HTTP Content with requestedBody in UTF encoding  
-                var HttpContent = new StringContent(requestBody, Encoding.UTF8, "application/json");
-                // Create a HTTP client
-                HttpClient client = new HttpClient();
-               
-                // Create a new Uri with uriString and assign it to HTTP client's BaseAddress property 
-                Uri _uri = new Uri(uriString);
-                client.BaseAddress = _uri;
-
-                HttpResponseMessage httpResponse = null;
-
-                switch (httpMethod)
-                {
-                    case "Get":
-                        // Use GetAsync to send HTTP request
-                        httpResponse = await client.GetAsync(uriString);
-                        break;
-
-                    case "Post":
-                        // Use PostAsync to send HTTP request
-                        httpResponse = await client.PostAsync(uriString, HttpContent);
-                        break;
-
-                    case "Delete":
-                        //Use DeleteAsync to send HTTP request
-                        httpResponse = client.DeleteAsync(uriString).Result;
-                        break;
-                }
-
-                string responseContent = await httpResponse.Content.ReadAsStringAsync();
-                textBoxStatusCode.Text = "" + (int)httpResponse.StatusCode;
-                textBoxMessage.Text = httpResponse.ReasonPhrase;
-
-                return responseContent;
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-
-        }
-
-        private async void ButtonConnect_Click(object sender, EventArgs e)
+        private void ButtonConnect_Click(object sender, EventArgs e)
         {
             if (buttonConnect.Text == "Connect")
             {
-                string requestBody = "{\"topics\":[\"" + textBoxTopic.Text + "\"]}";
-
-                // Percent encoding
-                string encodedChannelId = System.Uri.EscapeDataString(textBoxChannelId.Text);
-                string uriString = String.Format(textBoxHostName.Text + "/channels/{0}/subscription-sessions", encodedChannelId.Replace(@"%2F", "%252F"));
-                string _ISBMResponse = await ISBMApi(requestBody, uriString, "Post");
-                textBoxResponse.Text = _ISBMResponse;
-
                 try
                 {
+                    //Open Subscription Session
+                    OpenSubscriptionSessionResponse myOpenSubscriptionSessionResponse = myConsumerPublicationService.OpenSubscriptionSession(textBoxHostName.Text, textBoxChannelId.Text, textBoxTopic.Text, ServerType.Azure);
+                     
+                    textBoxResponse.Text = myOpenSubscriptionSessionResponse.ReasonPhrase;
+                    textBoxStatusCode.Text = myOpenSubscriptionSessionResponse.StatusCode.ToString();
 
-                    if (textBoxStatusCode.Text == "201")
+                    if (myOpenSubscriptionSessionResponse.StatusCode == 201)
                     {
-                        JObject objResponseContent = JObject.Parse(_ISBMResponse);
-                        textBoxSessionId.Text = (string)objResponseContent["sessionId"];
+
+                        textBoxSessionId.Text = myOpenSubscriptionSessionResponse.SessionID;
 
                         buttonConnect.Text = "Disconnect";
                         buttonReadTemp.Enabled = true;
@@ -160,17 +111,26 @@ namespace ISBM_Temp_Gauge
             }
             else
             {
-                string uriString = String.Format(textBoxHostName.Text + "/sessions/{0}", textBoxSessionId.Text);
-                string _ISBMResponse = await ISBMApi("", uriString, "Delete");
-                textBoxResponse.Text = _ISBMResponse;
-
-                if (textBoxStatusCode.Text == "204")
+                try
                 {
-                    textBoxSessionId.Text = "";
+                    //Close Subscription Session
+                    CloseSubscriptionSessionResponse myCloseSubscriptionSessionResponse = myConsumerPublicationService.CloseSubscriptionSession(textBoxHostName.Text, textBoxSessionId.Text);
+                    
+                    textBoxResponse.Text = myCloseSubscriptionSessionResponse.ReasonPhrase;
+                    textBoxStatusCode.Text = myCloseSubscriptionSessionResponse.StatusCode.ToString();
 
-                    buttonConnect.Text = "Connect";
-                    buttonReadTemp.Enabled = false;
+                    if (myCloseSubscriptionSessionResponse.StatusCode == 204)
+                    {
+                        textBoxSessionId.Text = "";
 
+                        buttonConnect.Text = "Connect";
+                        buttonReadTemp.Enabled = false;
+
+                    }
+                }
+                 catch (Exception)
+                {
+                    // Handle BOD or ISBM error 
                 }
             }
         }
