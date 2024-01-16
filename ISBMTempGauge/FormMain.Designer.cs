@@ -150,7 +150,7 @@
             this.textBoxChannelId.Name = "textBoxChannelId";
             this.textBoxChannelId.Size = new System.Drawing.Size(462, 26);
             this.textBoxChannelId.TabIndex = 11;
-            this.textBoxChannelId.Text = "/Robot Fleet/Ball Shooter/Drive System/ISO18435:D1.2/Publication";
+            this.textBoxChannelId.Text = "/services/general/publication";
             // 
             // textBoxHostName
             // 
