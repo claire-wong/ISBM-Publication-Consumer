@@ -24,9 +24,9 @@ using System.Windows.Forms;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ISBM20ClientAdapter;
-using ISBM20ClientAdapter.Enums;
-using ISBM20ClientAdapter.ResponseType;
+using RapidRedPanda.ISBM.ClientAdapter;
+using RapidRedPanda.ISBM.ClientAdapter.Enums;
+using RapidRedPanda.ISBM.ClientAdapter.ResponseType;
 
 namespace ISBM_Temp_Gauge
 {
@@ -73,7 +73,7 @@ namespace ISBM_Temp_Gauge
 
                 RemovePublicationResponse myRemovePublicationResponse = myConsumerPublicationService.RemovePublication(textBoxHostName.Text, textBoxSessionId.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Handle BOD or ISBM error 
             }
@@ -90,7 +90,7 @@ namespace ISBM_Temp_Gauge
                 try
                 {
                     //Open Subscription Session
-                    OpenSubscriptionSessionResponse myOpenSubscriptionSessionResponse = myConsumerPublicationService.OpenSubscriptionSession(textBoxHostName.Text, textBoxChannelId.Text, textBoxTopic.Text, ServerType.Azure);
+                    OpenSubscriptionSessionResponse myOpenSubscriptionSessionResponse = myConsumerPublicationService.OpenSubscriptionSession(textBoxHostName.Text, textBoxChannelId.Text, textBoxTopic.Text);
                      
                     textBoxResponse.Text = myOpenSubscriptionSessionResponse.ReasonPhrase;
                     textBoxStatusCode.Text = myOpenSubscriptionSessionResponse.StatusCode.ToString();

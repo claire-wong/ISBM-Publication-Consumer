@@ -7,7 +7,7 @@
     <ProjectGuid>{973167E9-DB2A-4353-9DA1-47A274BE4B61}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ISBM_Temp_Gauge</RootNamespace>
-    <AssemblyName>ISBM Temp Gauge</AssemblyName>
+    <AssemblyName>ISBMTempGaugeNET6</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,12 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ISBM20ClientAdapterStandard20">
-      <HintPath>Packages\ISBM20ClientAdapterStandard\netstandard2.0\ISBM20ClientAdapterStandard20.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Packages\Newtonsoft\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="RapidRedPanda.ISBM.ClientAdapter, Version=2.0.1.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\RapidRedPanda.ISBM.ClientAdapter.2.0.1.2\lib\netstandard2.0\RapidRedPanda.ISBM.ClientAdapter.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,6 +60,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +74,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
