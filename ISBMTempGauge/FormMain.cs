@@ -42,7 +42,7 @@ namespace ISBM_Temp_Gauge
 
             // Setup timer to read publication every 5 seconds
             timerReadTemperature = new Timer();
-            timerReadTemperature.Interval = 5000;
+            timerReadTemperature.Interval = 2000;
             timerReadTemperature.Tick += TimerReadTemperature_Tick;
 
         }
