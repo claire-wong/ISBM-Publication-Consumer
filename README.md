@@ -22,17 +22,27 @@ Figure 2. This project focuses on the temperature gauge as a sample ISBM Publica
      
 #### Dependencies
      1.  .Net Framework 4.7.2
-     2.  NewtonSoft v12.0.3 @
+     2.  RapidRedPanda.ISBM.ClientAdapter 2.0.1 @
+     3.  NewtonSoft v12.0.3 @
     
      * NuGet Packages
      
 ### Useful Links
 
-http://www.openoandm.org/files/standards/ISBM-2.0.pdf
+#### Standard Organizations
+   1. [OpenO&M](https://openoandm.org/)
+   2. [MIMOSA](https://www.mimosa.org/)
+   3. [International Society of Automation](https://www.isa.org/)
+   4. [OAGi](https://oagi.org/)
 
-https://www.mimosa.org/mimosa-ccom/
+#### Development Tools
+   1. [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+   2. [RapidRedPanda.ISBM.ClientAdapter](https://www.nuget.org/packages/RapidRedPanda.ISBM.ClientAdapter/#readme-body-tab)
+   
 
-* Just in case you have the dreaded "Couldn't process file resx" problem.
+### Quick Reference
 
-https://code-examples.net/en/q/30f85b7
-
+   1. OIIE - [OpenO&M Open Industrial Interoperability Ecosystem](https://www.mimosa.org/open-industrial-interoperability-ecosystem-oiie/)
+   2. ISBM - [International Society of Automation ISA-95 Message Service Model](https://openoandm.org/files/standards/ISBM-2.0.pdf)
+   3. CCOM - [MIMOSA Common Conceptual Object Model](https://www.mimosa.org/mimosa-ccom/)
+   4. BOD - [OAGIS Business Object Document](https://www.oagidocs.org/docs/)
