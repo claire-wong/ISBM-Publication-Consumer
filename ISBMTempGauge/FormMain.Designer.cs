@@ -52,14 +52,21 @@
             this.buttonReadTemp = new System.Windows.Forms.Button();
             this.labelUnit = new System.Windows.Forms.Label();
             this.textBoxValue = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxUserName = new System.Windows.Forms.TextBox();
+            this.labelUserName = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmpty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTempBar)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.buttonConnect);
             this.groupBox1.Controls.Add(this.textBoxMessage);
             this.groupBox1.Controls.Add(this.textBoxStatusCode);
@@ -78,7 +85,7 @@
             this.groupBox1.Controls.Add(this.labelISBMSettings);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(626, 417);
+            this.groupBox1.Size = new System.Drawing.Size(626, 524);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -87,7 +94,7 @@
             this.buttonConnect.BackColor = System.Drawing.Color.Indigo;
             this.buttonConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonConnect.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonConnect.Location = new System.Drawing.Point(475, 361);
+            this.buttonConnect.Location = new System.Drawing.Point(475, 465);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(135, 42);
             this.buttonConnect.TabIndex = 17;
@@ -99,7 +106,7 @@
             // 
             this.textBoxMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(172)))), ((int)(((byte)(196)))));
             this.textBoxMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxMessage.Location = new System.Drawing.Point(148, 284);
+            this.textBoxMessage.Location = new System.Drawing.Point(148, 286);
             this.textBoxMessage.Multiline = true;
             this.textBoxMessage.Name = "textBoxMessage";
             this.textBoxMessage.Size = new System.Drawing.Size(462, 66);
@@ -259,25 +266,25 @@
             this.groupBox2.Controls.Add(this.textBoxValue);
             this.groupBox2.Location = new System.Drawing.Point(653, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(179, 417);
+            this.groupBox2.Size = new System.Drawing.Size(179, 524);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
             // pictureBoxEmpty
             // 
             this.pictureBoxEmpty.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxEmpty.Image")));
-            this.pictureBoxEmpty.Location = new System.Drawing.Point(76, 126);
+            this.pictureBoxEmpty.Location = new System.Drawing.Point(76, 102);
             this.pictureBoxEmpty.Name = "pictureBoxEmpty";
-            this.pictureBoxEmpty.Size = new System.Drawing.Size(22, 200);
+            this.pictureBoxEmpty.Size = new System.Drawing.Size(22, 345);
             this.pictureBoxEmpty.TabIndex = 19;
             this.pictureBoxEmpty.TabStop = false;
             // 
             // pictureBoxTempBar
             // 
             this.pictureBoxTempBar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTempBar.Image")));
-            this.pictureBoxTempBar.Location = new System.Drawing.Point(76, 126);
+            this.pictureBoxTempBar.Location = new System.Drawing.Point(76, 102);
             this.pictureBoxTempBar.Name = "pictureBoxTempBar";
-            this.pictureBoxTempBar.Size = new System.Drawing.Size(22, 200);
+            this.pictureBoxTempBar.Size = new System.Drawing.Size(22, 345);
             this.pictureBoxTempBar.TabIndex = 20;
             this.pictureBoxTempBar.TabStop = false;
             // 
@@ -287,7 +294,7 @@
             this.buttonReadTemp.Enabled = false;
             this.buttonReadTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReadTemp.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonReadTemp.Location = new System.Drawing.Point(22, 361);
+            this.buttonReadTemp.Location = new System.Drawing.Point(22, 465);
             this.buttonReadTemp.Name = "buttonReadTemp";
             this.buttonReadTemp.Size = new System.Drawing.Size(135, 42);
             this.buttonReadTemp.TabIndex = 18;
@@ -319,22 +326,80 @@
             this.textBoxValue.Text = "00.00";
             this.textBoxValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBoxPassword);
+            this.groupBox3.Controls.Add(this.textBoxUserName);
+            this.groupBox3.Controls.Add(this.labelUserName);
+            this.groupBox3.Controls.Add(this.labelPassword);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox3.Location = new System.Drawing.Point(176, 364);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(434, 83);
+            this.groupBox3.TabIndex = 124;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Security";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(172)))), ((int)(((byte)(196)))));
+            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(172, 51);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(228, 26);
+            this.textBoxPassword.TabIndex = 108;
+            // 
+            // textBoxUserName
+            // 
+            this.textBoxUserName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(172)))), ((int)(((byte)(196)))));
+            this.textBoxUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUserName.Location = new System.Drawing.Point(172, 19);
+            this.textBoxUserName.Name = "textBoxUserName";
+            this.textBoxUserName.Size = new System.Drawing.Size(228, 26);
+            this.textBoxUserName.TabIndex = 107;
+            // 
+            // labelUserName
+            // 
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUserName.ForeColor = System.Drawing.Color.White;
+            this.labelUserName.Location = new System.Drawing.Point(77, 22);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(89, 20);
+            this.labelUserName.TabIndex = 106;
+            this.labelUserName.Text = "User Name";
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPassword.ForeColor = System.Drawing.Color.White;
+            this.labelPassword.Location = new System.Drawing.Point(77, 54);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(78, 20);
+            this.labelPassword.TabIndex = 105;
+            this.labelPassword.Text = "Password";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Indigo;
-            this.ClientSize = new System.Drawing.Size(851, 478);
+            this.ClientSize = new System.Drawing.Size(849, 550);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.Text = "ISBM Publication Consumer - Temperature Gauge";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmpty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTempBar)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -364,6 +429,11 @@
         private System.Windows.Forms.Button buttonReadTemp;
         private System.Windows.Forms.PictureBox pictureBoxTempBar;
         private System.Windows.Forms.PictureBox pictureBoxEmpty;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxUserName;
+        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Label labelPassword;
     }
 }
 

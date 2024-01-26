@@ -89,6 +89,10 @@ namespace ISBM_Temp_Gauge
             {
                 try
                 {
+                    //Calling ISBM Adaper method
+                    myConsumerPublicationService.Credential.Username = textBoxUserName.Text;
+                    myConsumerPublicationService.Credential.Password = textBoxPassword.Text;
+                    
                     //Open Subscription Session
                     OpenSubscriptionSessionResponse myOpenSubscriptionSessionResponse = myConsumerPublicationService.OpenSubscriptionSession(textBoxHostName.Text, textBoxChannelId.Text, textBoxTopic.Text);
                      
