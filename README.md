@@ -17,6 +17,10 @@ Figure 2. This project focuses on the temperature gauge as a sample ISBM Publica
 
 #### Version v0.2
 
+A Window program written in C#, targeting .Net Framework 4.7.2.
+
+The program starts with an Open Publication Session, proceeds to measure temperature, and posts the publication every five seconds. Users can stop the temperature acquisition and publication loop at their discretion. Additionally, the program provides an option to Close the Publication Session before exiting.
+
 #### Tools
      1.  Visual Studio 2022 Community
      
