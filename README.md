@@ -6,6 +6,15 @@ This is one of the three-part series of proof-of-concept projects with the prima
 Figure 1. The summary of the IoT demo using OIIE standards. Included in this three-part series are ISBM-2.0-Server-Adapter and ISBM-Publication-Provider, hosted in their respective repositories.
 A demo Window application that receives and consumes measured data using the ISBM 2.0 Adapter.
 
+### Contents
+  
+   1. [Objectives](#Objectives)
+   2. [Project Information](#Project-Information)
+   3. [Before Running the Program](#Before-Running-the-Program)
+   4. [Useful Links](#Useful-Links)
+   5. [Quick Reference](#Quick-Reference)
+  
+
 ### Objectives
 
 Build a Windows application to receive published temperature data in CCOM format, embedded in the OAGIS BOD message via an ISBM 2.0 Server adapter from ISBM 2.0 adapter. Making it as an interoperable data consumer.
@@ -30,7 +39,14 @@ The program starts with an Open Publication Session, proceeds to measure tempera
      3.  NewtonSoft v12.0.3 @
     
      * NuGet Packages
-     
+
+### Before Running the Program
+
+
+![image](/Documents/Images/Temperature-Gauge.png)
+
+Figure 3. Temperature Gauge
+
 ### Useful Links
 
 #### Standard Organizations
