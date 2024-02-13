@@ -28,7 +28,13 @@ Figure 2. This project focuses on the temperature gauge as a sample ISBM Publica
 
 A Window program written in C#, targeting .Net Framework 4.7.2.
 
-The program starts with an Open Publication Session, proceeds to measure temperature, and posts the publication every five seconds. Users can stop the temperature acquisition and publication loop at their discretion. Additionally, the program provides an option to Close the Publication Session before exiting.
+In this project, the NuGet package [RapidRedPanda.ISBM.ClientAdapter](https://www.nuget.org/packages/RapidRedPanda.ISBM.ClientAdapter/#readme-body-tab) is utilized. This package is designed to handle all the details of ISBM implementations for communication with ISBM servers. The ISBM interface will be accessible through object classes that developers should find user-friendly and easy to use. This will cut down the learning curve of building ISBM-compliant devices or applications.
+
+There is also a repository, [ISBM-2.0-Client-SDK](https://github.com/claire-wong/ISBM-2.0-Client-SDK), a full development kit for anyone wishing to learn more using the ISBM Client Adapter.
+
+The application will begin with a temperature gauge and a configuration section. Once the configuration information is entered correctly, you can click on the 'Connect' button to open a Subscription Session. Upon successful session initiation, a session ID will be displayed in the Session ID box. Then, click on the 'Read Temp' button to commence receiving BOD messages. Please note that the first message may have a 5-second delay, as the temperature sensor publishes a message every 5 seconds.
+
+You can click on 'Stop' at any time if you want to halt receiving messages. Click on the 'Disconnect' button to close the Subscription Session. It is preferable to close the session before exiting the application.
 
 #### Tools
      1.  Visual Studio 2022 Community
@@ -43,9 +49,14 @@ The program starts with an Open Publication Session, proceeds to measure tempera
 ### Before Running the Program
 
 
-![image](/Documents/Images/Temperature-Gauge.png)
+![image](/Documents/Images/Temperature-Gauge.jpg)
 
 Figure 3. Temperature Gauge
+
+1.  Enter your ISBM Server domain address in Host Name.
+2.  Enter your Channel ID if your are not using the ISBM Server Adaptor project provided in this OIIE demo.
+3.  When using the ISBM Server Adaptor project provided in this OIIE demo, leave User Name and Password blank. In case of connecting to secured ISBM servers, enter the credential information in User Name and Password 
+    boxes.
 
 ### Useful Links
 
