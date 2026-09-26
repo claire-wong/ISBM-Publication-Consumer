@@ -41,7 +41,7 @@ You can click on 'Stop' at any time if you want to halt receiving messages. Clic
      
 #### Dependencies
      1.  .Net Framework 4.7.2
-     2.  RapidRedPanda.ISBM.ClientAdapter 2.0.1 @
+     2.  RapidRedPanda.ISBM.ClientAdapter 2.2.0 @
      3.  NewtonSoft v12.0.3 @
     
      * NuGet Packages

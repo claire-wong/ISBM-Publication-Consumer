@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>clairewong</dc:creator>
+  <dc:description>RapidRedPanda ISBM ClientAdapter is a .NET client library for working with ISBM 2.0 services in Open Industrial Interoperability Ecosystem (OIIE) scenarios. It supports channel management, publication, request/response workflows, synchronous and asynchronous APIs, and MessageContent media type handling.</dc:description>
+  <dc:identifier>RapidRedPanda.ISBM.ClientAdapter</dc:identifier>
+  <version>2.2.0</version>
+  <keywords>ISBM MIMOSA OIIE ISA-95 message-bus integration interoperability industrial messaging client adapter publication request-response service-bus enterprise-integration data-exchange</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=7.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;.NET 8.0</lastModifiedBy>
+</coreProperties>

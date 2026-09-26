@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>RapidRedPanda.ISBM.ClientAdapter</id>
+    <version>2.2.0</version>
+    <title>RapidRedPanda ISBM ClientAdapter</title>
+    <authors>clairewong</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/claire-wong/RapidRedPanda.ISBM.ClientAdapter.SDK.Samples</projectUrl>
+    <description>RapidRedPanda ISBM ClientAdapter is a .NET client library for working with ISBM 2.0 services in Open Industrial Interoperability Ecosystem (OIIE) scenarios. It supports channel management, publication, request/response workflows, synchronous and asynchronous APIs, and MessageContent media type handling.</description>
+    <releaseNotes>RapidRedPanda.ISBM.ClientAdapter 2.2.0 aligns FilterExpression serialization with the ISBM 2.0 REST schema. ApplicableMediaTypes now uses string media type entries; existing callers using ApplicableMediaType objects should update to string entries.</releaseNotes>
+    <copyright>Copyright © 2026 clairewong</copyright>
+    <tags>ISBM MIMOSA OIIE ISA-95 message-bus integration interoperability industrial messaging client adapter publication request-response service-bus enterprise-integration data-exchange</tags>
+    <repository type="git" commit="ed8fe9b35332ddeb6f5ebb60e9ecf58991febb4a" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="net8.0">
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
