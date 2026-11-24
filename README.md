@@ -58,6 +58,30 @@ Both NuGet packages are included in the repository. A complete checkout can buil
 3. Select **Debug** or **Release**, then choose **Build > Build Solution**.
 4. Run `ISBMTempGauge/bin/Debug/ISBMTempGauge.exe` for Debug or `ISBMTempGauge/bin/Release/ISBMTempGauge.exe` for Release. Keep the executable alongside `ISBMTempGauge.exe.config` and the dependency DLLs in the build output directory.
 
+#### Windows Download Security
+
+If you download the source code as a ZIP archive from GitHub, Windows may mark the downloaded files as originating from the Internet. This can cause Visual Studio build errors when processing resource files (`.resx`).
+
+**Recommended approach before extracting the ZIP file**
+
+1. Right-click the downloaded ZIP file.
+2. Select **Properties**.
+3. Select **Unblock**, if available.
+4. Click **Apply**, then **OK**.
+5. Extract the ZIP file and open the solution in Visual Studio.
+
+**If the files have already been extracted**
+
+Open PowerShell in the extracted repository directory and execute the following command.
+
+```powershell
+Get-ChildItem -Path . -Recurse -File | Unblock-File
+```
+
+Only unblock files obtained from a trusted source.
+
+This step is generally unnecessary when the repository is obtained using `git clone`.
+
 ### Before Running the Program
 
 

@@ -8,3 +8,6 @@
 
 # Internal development and agent reports
 /Agent.Tasks/
+
+# Local release artifacts
+/Artifacts/
